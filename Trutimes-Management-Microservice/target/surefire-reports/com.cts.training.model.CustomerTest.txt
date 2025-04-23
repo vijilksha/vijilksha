@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.cts.training.model.CustomerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 sec <<< FAILURE! - in com.cts.training.model.CustomerTest
+initializationError(com.cts.training.model.CustomerTest)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.NoClassDefFoundError: LCustomer;
+Caused by: java.lang.ClassNotFoundException: Customer
+

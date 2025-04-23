@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Employee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">trutime-management</a> &gt; <a href="index.source.html" class="el_package">com.cts.training.model</a> &gt; <span class="el_source">Employee.java</span></div><h1>Employee.java</h1><pre class="source lang-java linenums">package com.cts.training.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import java.util.List;
+
+@Entity
+<span class="nc bnc" id="L24" title="All 54 branches missed.">@Data</span>
+<span class="fc" id="L25">@NoArgsConstructor</span>
+<span class="nc" id="L26">@AllArgsConstructor</span>
+<span class="nc" id="L27">@Builder</span>
+@ApiModel(description = &quot;Employee entity representing a company employee or manager&quot;)
+public class Employee {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(value = &quot;Employee ID&quot;)
+<span class="nc" id="L34">    private Long id;</span>
+
+    @ApiModelProperty(value = &quot;Full name of the employee&quot;, example = &quot;John Doe&quot;)
+<span class="nc" id="L37">    private String name;</span>
+
+    @Column(unique = true)
+    @ApiModelProperty(value = &quot;Unique email address&quot;, example = &quot;john.doe@company.com&quot;)
+<span class="nc" id="L41">    private String email;</span>
+
+    @ApiModelProperty(value = &quot;Role of the employee (EMPLOYEE or MANAGER)&quot;, example = &quot;EMPLOYEE&quot;)
+<span class="nc" id="L44">    private String role;</span>
+
+    @ManyToOne
+    @JoinColumn(name = &quot;manager_id&quot;)
+    @ApiModelProperty(value = &quot;Manager associated with this employee&quot;)
+<span class="nc" id="L49">    private Employee manager;</span>
+
+    @OneToMany(mappedBy = &quot;employee&quot;)
+    @ApiModelProperty(value = &quot;Time entries recorded for this employee&quot;)
+<span class="nc" id="L53">    private List&lt;TimeEntry&gt; timeEntries;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

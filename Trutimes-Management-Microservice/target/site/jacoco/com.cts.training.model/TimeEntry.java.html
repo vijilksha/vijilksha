@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TimeEntry.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">trutime-management</a> &gt; <a href="index.source.html" class="el_package">com.cts.training.model</a> &gt; <span class="el_source">TimeEntry.java</span></div><h1>TimeEntry.java</h1><pre class="source lang-java linenums">package com.cts.training.model;
+
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+<span class="nc bnc" id="L27" title="All 52 branches missed.">@Data</span>
+<span class="fc" id="L28">@NoArgsConstructor</span>
+<span class="nc" id="L29">@AllArgsConstructor</span>
+
+@ApiModel(description = &quot;Time entry entity representing swipe-in/swipe-out and top-up info&quot;)
+public class TimeEntry {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty(notes = &quot;Time entry ID&quot;, example = &quot;100&quot;, position = 0)
+<span class="nc" id="L37">    private Long id;</span>
+
+    @ApiModelProperty(notes = &quot;Entry date&quot;, example = &quot;2025-04-19&quot;, position = 1)
+<span class="nc" id="L40">    private LocalDate date;</span>
+
+    @ApiModelProperty(notes = &quot;Swipe in time&quot;, example = &quot;2025-04-19T09:00:00&quot;, position = 2)
+<span class="nc" id="L43">    private LocalDateTime swipeIn;</span>
+
+    @ApiModelProperty(notes = &quot;Swipe out time&quot;, example = &quot;2025-04-19T18:00:00&quot;, position = 3)
+<span class="nc" id="L46">    private LocalDateTime swipeOut;</span>
+
+<span class="pc" id="L48">    @ApiModelProperty(notes = &quot;Top-up minutes added if not completing 10 hrs&quot;, example = &quot;30&quot;, position = 4)</span>
+<span class="nc" id="L49">    private int topUpMinutes = 0;</span>
+
+<span class="pc" id="L51">    @ApiModelProperty(notes = &quot;Whether the manager approved the entry&quot;, example = &quot;false&quot;, position = 5)</span>
+<span class="nc" id="L52">    private boolean approved = false;</span>
+
+    @ManyToOne
+    @JoinColumn(name = &quot;employee_id&quot;)
+    @ApiModelProperty(notes = &quot;Employee who made this time entry&quot;, position = 6)
+<span class="nc" id="L57">    private Employee employee;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
